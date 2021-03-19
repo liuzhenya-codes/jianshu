@@ -1,12 +1,12 @@
 import { Fragment } from 'react'
 import ReactDOM from 'react-dom';
-import App from './App';
+import Header from './common/header';
 import { GlobalStyle } from './style.js'
 
 ReactDOM.render(
   <Fragment>
     <GlobalStyle />
-    <App />
+    <Header />
   </Fragment>,
   document.getElementById('root')
 )
