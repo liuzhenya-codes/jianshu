@@ -5,6 +5,9 @@ import IconfontGlobalStyle from './statics/iconfont/iconfont'
 import { GlobalStyle } from './style.js'
 import { Provider } from 'react-redux'
 import store from './store'
+import { BrowserRouter, Route } from 'react-router-dom'
+import Home from './pages/home'
+import Detail from './pages/detail'
 
 ReactDOM.render(
   <Fragment>
@@ -12,6 +15,10 @@ ReactDOM.render(
     <IconfontGlobalStyle />,
     <Provider store={store}>
       <Header />
+      <BrowserRouter>
+        <Route path='/' exact component={Home} />
+        <Route path='/detail' exact component={Detail} />
+      </BrowserRouter>
     </Provider>
   </Fragment>,
   document.getElementById('root')
