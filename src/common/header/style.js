@@ -81,19 +81,21 @@ export const NavSearch = styled.input.attrs({
   &::placeholder {
     color: #999;
   }
-  &.focused {
+  &.slide-enter-active {
     width: 240px;
-  }
-  &.slide-enter {
     transition: all .2s ease-out;
   }
-  &.slide-enter-active {
+  &.slide-enter-done {
     width: 240px;
   }
   &.slide-exit {
     transition: all .2s ease-out;
   }
   &.slide-exit-active {
+    width: 160px;
+    transition: all .2s ease-out;
+  }
+  &.slide-exit-done {
     width: 160px;
   }
 `;

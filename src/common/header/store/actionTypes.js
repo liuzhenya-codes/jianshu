@@ -1,0 +1,6 @@
+export const FOUCS_SEARCH_INPUT = 'header/FOUCS_SEARCH_INPUT'
+export const BLUR_SEARCH_INPUT = 'header/BLUR_SEARCH_INPUT'
+export const SET_LIST = 'header/SET_LIST'
+export const SET_PAGE = 'header/SET_PAGE'
+export const MOUSE_ENTER = 'header/MOUSE_ENTER'
+export const MOUSE_LEAVE = 'header/MOUSE_LEAVE'
