@@ -1,6 +1,6 @@
-import { Component } from 'react'
+import { PureComponent } from 'react'
 
-class Detail extends Component {
+class Detail extends PureComponent {
   render () {
     return(
       <div>detail</div>

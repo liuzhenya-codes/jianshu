@@ -9,7 +9,7 @@ const defaultState = fromJS({
   mouseIn: false,
 })
 
-const reducers = (state = defaultState, action) => {
+const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.FOUCS_SEARCH_INPUT: {
       return state.set('focused', true)
@@ -38,5 +38,5 @@ const reducers = (state = defaultState, action) => {
   }
 }
 
-export default reducers
+export default reducer
 

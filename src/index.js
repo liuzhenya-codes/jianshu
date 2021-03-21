@@ -12,10 +12,10 @@ import Detail from './pages/detail'
 ReactDOM.render(
   <Fragment>
     <GlobalStyle />
-    <IconfontGlobalStyle />,
+    <IconfontGlobalStyle />
     <Provider store={store}>
-      <Header />
       <BrowserRouter>
+        <Header />
         <Route path='/' exact component={Home} />
         <Route path='/detail' exact component={Detail} />
       </BrowserRouter>

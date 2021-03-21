@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux-immutable'
-import { reducers as headerReducers } from '../common/header/store'
+import { reducer as headerReducer } from '../common/header/store'
+import { reducer as homeReduce } from '../pages/home/store'
 
-const reducers = combineReducers({
-  header: headerReducers
+const reducer = combineReducers({
+  header: headerReducer,
+  home: homeReduce
 })
 
-export default reducers
+export default reducer
