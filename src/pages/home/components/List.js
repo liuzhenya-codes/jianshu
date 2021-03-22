@@ -5,25 +5,32 @@ import {
   ListInfo,
   LoadMore
 } from '../style'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { actionCreators } from '../store'
 
 class List extends PureComponent {
+  constructor (props) {
+    super(props)
+    this.pushToDetail = this.pushToDetail.bind(this)
+  }
+
+  pushToDetail (articleId) {
+    this.props.history.push({ pathname: '/detail', query: { articleId } })
+  }
+
   render () {
     return(
       <div>
         {
           this.props.articleList.map((item, index) => {
             return (
-              <Link key={index} to='/detail'>
-                <ListItem>
-                  <ListInfo>
-                    <h2 className='title'>{item.get('title')}</h2>
-                    <div className='desc'>{item.get('desc')}</div>
-                  </ListInfo>
-                  <img src={item.get('imgUrl')} className='pic' alt='' />
-                </ListItem>
-              </Link>
+              <ListItem onClick={() => this.pushToDetail(item.get('id'))} key={index}>
+                <ListInfo>
+                  <h2 className='title'>{item.get('title')}</h2>
+                  <div className='desc'>{item.get('desc')}</div>
+                </ListInfo>
+                <img src={item.get('imgUrl')} className='pic' alt='' />
+              </ListItem>
             )
           })
         }
@@ -48,4 +55,4 @@ const mapDispatch = (dispatch) => {
   }
 }
 
-export default connect(mapState, mapDispatch)(List)
+export default connect(mapState, mapDispatch)(withRouter(List))
