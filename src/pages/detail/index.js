@@ -1,6 +1,6 @@
 import { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { actionCreactors } from './store'
+import { actionCreators } from './store'
 import {
   DetailWrapper,
   Header,
@@ -31,7 +31,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     getDetailData (articleId) {
-      dispatch(actionCreactors.getDetailData(articleId))
+      dispatch(actionCreators.getDetailData(articleId))
     }
   }
 }

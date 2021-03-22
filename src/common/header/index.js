@@ -17,9 +17,15 @@ import {
 } from './style'
 import { CSSTransition } from 'react-transition-group'
 import { actionCreators } from './store'
-import {  Link } from 'react-router-dom' 
+import { actionCreators as loginActionCreators } from '../../pages/login/store'
+import {  Link, withRouter } from 'react-router-dom'
 
 class Header extends PureComponent {
+  constructor (props) {
+    super(props)
+    this.pushToLogin = this.pushToLogin.bind(this)
+  }
+
   getListArea () {
     const { list, page, totalPage, focused, mouseIn } = this.props
     const { onHotSearchMouseEnter, onHotSearchMouseLeave, onChangeHotSearchPage } = this.props
@@ -56,8 +62,11 @@ class Header extends PureComponent {
       return null
     }
   }
+  pushToLogin () {
+    this.props.history.push('/login')
+  }
   render () {
-    const  { list, focused, onSearchFoucs, onSearchBlur } = this.props
+    const  { list, focused, onSearchFoucs, onSearchBlur, loginStatus } = this.props
     return (
       <HeaderWrapper>
         <Link to='/'>
@@ -80,7 +89,11 @@ class Header extends PureComponent {
             <i className={`iconfont zoom ${focused ? 'focused' : ''}`}>&#xe62d;</i>
 						{this.getListArea()}
           </SearchWrapper>
-          <NavItem className='right'>登陆</NavItem>
+          {
+            loginStatus ?
+            <NavItem className='right' onClick={this.props.quitAccount}>退出</NavItem>:
+            <NavItem className='right' onClick={this.pushToLogin}>登录</NavItem>
+          }
           <NavItem className='right'>
             <i className='iconfont'>&#xe636;</i>
           </NavItem>
@@ -103,7 +116,8 @@ const mapStateToProps = (state) => {
     list: state.getIn(['header', 'list']),
     page: state.getIn(['header', 'page']),
     totalPage: state.getIn(['header', 'totalPage']),
-    mouseIn: state.getIn(['header', 'mouseIn'])
+    mouseIn: state.getIn(['header', 'mouseIn']),
+    loginStatus: state.getIn(['login', 'loginStatus'])
   }
 }
 
@@ -131,8 +145,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     getListData () {
       dispatch(actionCreators.getInitListDataAction())
+    },
+    quitAccount () {
+      dispatch(loginActionCreators.changeLoginStatusAction(false))
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header))
