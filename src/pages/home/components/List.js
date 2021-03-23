@@ -15,7 +15,7 @@ class List extends PureComponent {
   }
 
   pushToDetail (articleId) {
-    this.props.history.push({ pathname: '/detail', query: { articleId } })
+    this.props.history.push({ pathname: '/detail', state: { articleId } })
   }
 
   render () {

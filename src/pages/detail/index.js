@@ -17,7 +17,7 @@ class Detail extends PureComponent {
     )
   }
   componentDidMount () {
-    this.props.getDetailData(this.props.location.query.articleId)
+    this.props.getDetailData(this.props.location.state.articleId)
   }
 }
 
